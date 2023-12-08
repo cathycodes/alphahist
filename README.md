@@ -16,7 +16,7 @@ Try it out: [Parking History](https://cathycodes.github.io/alphahist/alphapark.h
       
   -Duplicate Parking Structure Filter
   
-    What makes a duplicate :thinking: A Street Address+Borough or a BIN that has more than 1 unique Parking Structure ID (PSID).
+    What makes a duplicate?  A Street Address+Borough or a BIN that has more than 1 unique Parking Structure ID (PSID).
     
     User gets a list of probable structures from which to select.
     
