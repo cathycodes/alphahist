@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://d3js.org/d3.v7.min.js" defer></script>
+    <script src="alphapark.js" defer></script>    <link
+      rel="icon"
+      href="https://www.my.buildings.nycnet/Buildings/wp-content/uploads/Pngs/Intranet_Alt3-150x150.png"
+      type="image/png"
+      sizes="16x16"
+    />
+    <title>Parking Structure Inspection History</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    >
+    <link href="css/alphapark.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="navbar-text">
+      <a href="https://www.nyc.gov" target="_blank" title="DOB Intranet"> <img src="images/transparent-nyc_white@x2.png" height="15" alt="NYC Logo"></img></a>
+    </div>
+    <div class="navbar justify-content-center">
+      <div class="h2">Parking Structure Inspection Lookup<a id="_1a" style="display:none"></a>
+      </div>
+    </div>
+<div class="container" style="border:3px solid rgb(98, 97, 97)">
+      <div class="getIt row" title="Get source data">Export<img style="width:50px;" src="images/exporticon.png"  ></div>
+      <div class="row first">
+          <div class="col-lg-6">
+              <div class="row">
+                  <div class="col-md-2">
+
+                    <img src="images\searchsvg.svg" id="doSearch" alt="Search" title="Search"> Search
+                  </div>
+                  <div class="col-md-3">
+                    <input id="searchTerm" type="search" minlength="7" maxlength="55" size="40" placeholder="Street Address, BIN, or Parking Structure ID"/>
+                    <select name="structures" id="structures" style="width:30rem;display:none">
+                      <option value="" >Multiple Parking Structures Found - Please Select</option>
+                    </select>
+                    
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6 xrad">
+            <label><input type="radio" name="borough" value="bronx" checked> Bronx</label>
+            <label><input type="radio" name="borough" value="brooklyn"> Brooklyn</label>
+            <label><input type="radio" name="borough" value="manhattan"> Manhattan</label>
+            <label><input type="radio" name="borough" value="queens"> Queens</label>
+            <label><input type="radio" name="borough" value="staten island"> Staten Island</label>
+          </div>
+      </div>
+      <div class="row resultDiv">
+        <div class="col-lg-5" id="propertyData">
+            Search Results...<span id="notFoundMsg2"></span>
+        </div>
+        <div class="col-lg-7 structureDataDetail" id="structureDataDetail"></div>
+    </div>
+    <div class="errorDiv" style="display:none"></div>
+</div>
+<nav class="navbar fixed-bottom container-fluid">
+  <div class="container-fluid foot" >
+    <a href="https://www.nyc.gov/home/terms-of-use.page" target="_blank">Terms of Use</a>
+    <a  href="https://www.my.buildings.nycnet/Buildings/" target="_blank"><img src="images\transparent-nyc_white@x2.png"  alt="NYC Logo" height="10" />
+        <span>build safe | live safe</span>
+    </a>
+    <a class="devsquad" href="https://www1.nyc.gov/site/buildings/dob/analytics-reports.page" target="_blank">Built by Dev Squad</a>
+  </div>
+</nav>
+</body>
+</html>
