@@ -8,7 +8,6 @@
       document.querySelector("#doSearch").click();
     }
   });
-
   document.querySelector("#structures").addEventListener("change",e=>{
     e.stopImmediatePropagation;
     e.preventDefault();
@@ -22,6 +21,7 @@
   let vPropCycles = new DocumentFragment();
   const data = await d3.csv(
     "https://raw.githubusercontent.com/NYCDOB/ParkingStructures/gh-pages/data/ParkingStructureInspections.csv",
+//    "ParkingStructureInspections.csv",
     (d) => {
       if (d["Report Status"]=="Accepted"  && d["Status"]=="Active") {
       d.Address=`${d["House  Number"]} ${d["Street Name"]}`;
@@ -58,7 +58,7 @@
       thediv.appendChild(vDivEl);
     }
     function getvVals(xR,vVals=[]) {
-let orgarray = ["PIPS Sub-Cycle","Filing Name","Filing Status","Effective Filing Date","QPSI","Filing Type","Owner Name","UNSAFE / SREM Completion Date","FISP"];
+let orgarray = ["PIPS Sub-Cycle","Filing Name","Filing Status","Effective Filing Date","QPSI","City Owned","Owner Name","UNSAFE / SREM Completion Date","FISP"];
       orgarray.forEach((x) => {
         if (x == "UNSAFE / SREM Completion Date") {
           if (xR["Filing Status"].toLowerCase() == "unsafe"  || xR["Filing Status"].toLowerCase()=="srem" ) {
@@ -76,7 +76,7 @@ let orgarray = ["PIPS Sub-Cycle","Filing Name","Filing Status","Effective Filing
     _H.class = "col-xl-1";
     _H.appendChild(_A);
     vProp.appendChild(_H);
-    let vVals = {"Parking Structure ID":"","BIN":"","Borough":"", "Block":"","Lot":"","C.B. No.":"CD","DOF Bldg Classification Description":"Building Class","City Owned":"","ActiveStructuralPermit":"Active Permit"};
+    let vVals = {"Parking Structure ID":"","BIN":"","Borough":"", "Block":"","Lot":"","C.B. No.":"CD","ActiveStructuralPermit":"Active Permit"};
     let ndx=0;
     for (let _x in vVals) {
         window["_Div" + ndx] = document.createElement("div");
