@@ -21,10 +21,13 @@
   let vPropCycles = new DocumentFragment();
   const data = await d3.csv(
     "https://raw.githubusercontent.com/NYCDOB/ParkingStructures/gh-pages/data/ParkingStructureInspections.csv",
-//    "ParkingStructureInspections.csv",
+    // "ParkingStructureInspections.csv",
     (d) => {
-      if (d["Report Status"]=="Accepted"  && d["Status"]=="Active") {
-      d.Address=`${d["House  Number"]} ${d["Street Name"]}`;
+      if (d["Report Status"]=="Accepted" && d["Status"]=="Active" && ["1813360","1813361","1813392"].indexOf(d.BIN)==-1 ) {
+      let _r="";
+      d["Street Name"].split(' ').forEach(x =>{if (x.trim()){_r+=x.trim()+" "}})
+        d.Address=`${d["House  Number"]} ${_r.trim()}`;
+        d["Owner Name"]=(d["City Owned"]=="Y")?d["DOF Owner Name"]:d["Owner Name"];
       return d;
       }
     }
@@ -58,7 +61,7 @@
       thediv.appendChild(vDivEl);
     }
     function getvVals(xR,vVals=[]) {
-let orgarray = ["PIPS Sub-Cycle","Filing Name","Filing Status","Effective Filing Date","QPSI","City Owned","Owner Name","UNSAFE / SREM Completion Date","FISP"];
+      let orgarray = ["PIPS Sub-Cycle","Filing Name","Filing Status","Effective Filing Date","QPSI","City Owned","Owner Name","UNSAFE / SREM Completion Date","FISP"];
       orgarray.forEach((x) => {
         if (x == "UNSAFE / SREM Completion Date") {
           if (xR["Filing Status"].toLowerCase() == "unsafe"  || xR["Filing Status"].toLowerCase()=="srem" ) {
@@ -122,17 +125,16 @@ let orgarray = ["PIPS Sub-Cycle","Filing Name","Filing Status","Effective Filing
       .value.toLowerCase()
       .trim();
     if (!searchTerm) return;
+    let _r="";
+    searchTerm.split(/\s/).forEach(r =>{if(r.trim()){_r+=r.trim()+" "}});
+    searchTerm=_r.trim();
     document.querySelector("#propertyData").innerText = "";
     let vBoro;
     document.querySelectorAll("[name='borough']").forEach((e) => {
-      if (e.checked) {
-        vBoro = e.value;
-      }
-    });
+      if (e.checked) {vBoro = e.value;}});
     let _t = data.filter((e) => {
       return (
-        searchTerm == e["BIN"] ||searchTerm == e["Parking Structure ID"].trim().toLowerCase() ||(searchTerm == e["Address"].toLowerCase().trim() &&
-          e["Borough"].toLowerCase()==vBoro)
+        searchTerm == e["BIN"] ||searchTerm == e["Parking Structure ID"].trim().toLowerCase() ||(searchTerm == e["Address"].toLowerCase().trim() && e["Borough"].toLowerCase()==vBoro)
       );
     });
     if (_t.length == 0) {
