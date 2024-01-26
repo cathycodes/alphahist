@@ -24,15 +24,15 @@
       return d;}});
   document.querySelector(".getIt").addEventListener("click",(e)=>{
     let _m=[]; 
-    let cols=["Parking Structure ID","Filing Name","Initial Filing Status","Filing Status","House  Number","Street Name","BIN","Block","Lot","Borough","C.B. No.","QPSI","Filing Type","UNSAFE / SREM Completion Date","Effective Filing Date","PIPS Cycle","PIPS Sub-Cycle","DOF Bldg Classification Description","City Owned","Report Status","ActiveStructuralPermit","FISP","LAT","LONG"]
+    let cols=["Parking Structure ID","Filing Name","Filing Status","House  Number","Street Name","BIN","Block","Lot","Borough","C.B. No.","QPSI","Filing Type","UNSAFE / SREM Completion Date","Effective Filing Date","PIPS Cycle","PIPS Sub-Cycle","DOF Bldg Classification Description","City Owned","Report Status","Initial Filing Status","ActiveStructuralPermit","FISP","LAT","LONG"]
     _m.push(cols);
     let getDString=()=>{
       let _d=new Date();
       return _d.getFullYear().toString()+("0"+(_d.getMonth()+1)).slice(-2)+("0"+(_d.getDate())).slice(-2);}
-    data.forEach(   e => {
+    data.forEach(e => {
           let theline="";
           for (let _i of Object.keys(e) ) {
-                if (cols.indexOf(_i)>=0){
+                if (cols.find(_o =>_o==_i)){
                   let _w=(e[_i].indexOf(',')>=0||_i=="DOF Bldg Classification Description"?'"':'');
                   theline+=_w+e[_i]+_w+",";}}
           _m.push(theline);
