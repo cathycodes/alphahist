@@ -24,25 +24,22 @@
       return d;}});
   document.querySelector(".getIt").addEventListener("click",(e)=>{
     let _m=[]; 
-    let cols=["Parking Structure ID","Filing Name","Filing Status","House  Number","Street Name","BIN","Block","Lot","Borough","C.B. No.","QPSI","Filing Type","UNSAFE / SREM Completion Date","Effective Filing Date","PIPS Cycle","PIPS Sub-Cycle","DOF Bldg Classification Description","City Owned","Report Status","Initial Filing Status","ActiveStructuralPermit","FISP","LAT","LONG"]
+    let cols=["Parking Structure ID","Filing Name","Filing Status","Initial Filing Status","House  Number","Street Name","BIN","Block","Lot","Borough","C.B. No.","QPSI","Filing Type","UNSAFE / SREM Completion Date","Effective Filing Date","PIPS Cycle","PIPS Sub-Cycle","DOF Bldg Classification Description","City Owned","Report Status","ActiveStructuralPermit","FISP","LAT","LONG"];
     _m.push(cols);
     let getDString=()=>{
-      let _d=new Date();
-      return _d.getFullYear().toString()+("0"+(_d.getMonth()+1)).slice(-2)+("0"+(_d.getDate())).slice(-2);}
+    let _d=new Date();return _d.getFullYear().toString()+("0"+(_d.getMonth()+1)).slice(-2)+("0"+(_d.getDate())).slice(-2);}
     data.forEach(e => {
-          let theline="";
-          for (let _i of Object.keys(e) ) {
-                if (cols.find(_o =>_o==_i)){
-                  let _w=(e[_i].indexOf(',')>=0||_i=="DOF Bldg Classification Description"?'"':'');
-                  theline+=_w+e[_i]+_w+",";}}
-          _m.push(theline);
-          theline="";
+      let _l2="";
+      for (let x of cols) {
+        _l2+=(e[x].indexOf(",")==-1)?`${e[x]},`:`"${e[x]}",`;
+        }
+      _m.push(_l2);_l2="";
     });
     let filename="ParkingStructureInspections_"+getDString()+".csv";
     let filetype="text/plain";
     let a=document.getElementById("_1a");let file = new Blob([_m.join("\n")],{type:filetype});a.href = URL.createObjectURL(file);
     a.download=filename;a.click()
-  });
+  });  
   function buildCard(e) {
     function fMakeEl(theval, thediv, theclass) {
       let vDivEl = document.createElement("div");
