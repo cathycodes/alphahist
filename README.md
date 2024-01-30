@@ -31,6 +31,7 @@ Try it out: [Parking History](https://cathycodes.github.io/alphahist/alphapark.h
 -	Parking Structure ID
 -	Filing Name
 -	Filing Status
+-	Initial Filing Status
 -	House  Number
 -	Street Name
 -	BIN
