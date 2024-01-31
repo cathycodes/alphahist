@@ -159,7 +159,7 @@
   });
   (function () {
     let t=window.location.href.split('?')[1];history.pushState(null,"",window.location.href.split('?')[0]);
-    if (t) {
+    if (t?.length>0) {
       let d=document.querySelector("#searchTerm");
       d.value=t;d.setAttribute("value", t);let x=document.querySelector("#doSearch");x.click();
     }
