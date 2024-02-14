@@ -102,3 +102,6 @@ box-shadow: 2px 2px 1px 0px #fb0e0e;
   font-weight:bolder;
   float:right;
 }
+.dobicon{
+  transform: scale(.7);
+}
