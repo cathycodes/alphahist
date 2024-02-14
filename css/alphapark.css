@@ -28,7 +28,7 @@ body {
   border:3px solid rgb(98, 97, 97);
 }
 .first {
-  border-bottom: 1px solid rgb(201, 202, 203);
+  zborder-bottom: 1px solid rgb(201, 202, 203);
   height: 15%;
   align-items: center;
 }
@@ -91,10 +91,12 @@ select#structures {
 100% {outline: 4px solid rgba(255, 17, 17);}
 }
 #structures {
+display:none;
 animation: slist 500ms;
 border:1px solid red;
 position: relative;	
 box-shadow: 2px 2px 1px 0px #fb0e0e;
+width:30rem;
 }  
 .getIt{
   font-size:16px;
