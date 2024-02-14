@@ -102,6 +102,9 @@ box-shadow: 2px 2px 1px 0px #fb0e0e;
   font-weight:bolder;
   float:right;
 }
+.getIt img{
+  width:20px;opacity:75%
+}
 .dobicon{
   transform: scale(.7);
 }
